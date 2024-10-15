@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import oit.is.lec04.kadai.lec04.model.ChamberMapper;
 import oit.is.lec04.kadai.lec04.model.Chamber;
+import oit.is.lec04.kadai.lec04.model.ChamberUser;
 
 /**
  * /sample3へのリクエストを扱うクラス authenticateの設定をしていれば， /sample3へのアクセスはすべて認証が必要になる
@@ -43,6 +44,14 @@ public class Sample41Controller {
 
   @GetMapping("step6")
   public String sample46() {
+    return "sample46.html";
+  }
+
+  @GetMapping("step7")
+  @Transactional
+  public String sample47(ModelMap model) {
+    ArrayList<ChamberUser> chamberUsers7 = chamberMapper.selectAllChamberUser();
+    model.addAttribute("chamberUsers7", chamberUsers7);
     return "sample46.html";
   }
 
